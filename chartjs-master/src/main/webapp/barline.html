@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- /chartjs/src/main/webapp/barline.html -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>막대그래프와 라인 그래프 함께 표현하기</title>
+<script type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+<body>
+	<div style="width: 75%"><canvas id="canvas"></canvas></div>
+<script type="text/javascript">
+let MONTHS =['1월','2월','3월','4월','5월',
+    '6월','7월','8월','9월','10월','11월','12월'];
+let chartData = {
+	labels: MONTHS,   //x축의 내용
+	datasets: [
+	 {
+		type: 'line',
+		label: '영업부',  //범례에 표시되는 내용
+		borderColor: "#FF00FF",
+		borderWidth: 5,
+		fill: true,   //기본값 : true
+		data: [10,15,25,55,-25,-65,30,56,78,12,50,25],
+	}, 
+	{
+		type: 'bar',
+		label: '영업부',
+		backgroundColor: "#A566FF",
+		data: [10,15,25,55,-25,-65,30,56,78,12,50,25],
+		borderColor: 'white',
+		borderWidth: 2
+	},{
+		type: 'line',
+		fill: false,
+		label: '총무부',
+		borderColor: "#00FF00",
+		data: [23,15,25,35,25,62,10,23,65,45,56,58]
+	},{
+		type: 'bar',
+		label: '총무부',
+		backgroundColor: "#86E57F",
+		data: [23,15,25,35,25,62,10,23,65,45,56,58]
+	}]
+};
+window.onload = function() {
+	var ctx = document.getElementById('canvas').getContext('2d');
+	new Chart(ctx, {
+		type: 'bar',
+		data: chartData,
+		options: {
+			responsive: true,
+			title: {display: true,
+				    text: '막대그래프와 선그래프'
+			},
+			legend : {display : true }, //범례
+			scales: {
+				yAxes: [{
+					display : true,
+					scaleLabel:  {
+					   display : true,
+					   labelString : "부서별 실적 증가율"
+					}
+				}]			
+		    }
+		}
+	});
+};</script></body></html>

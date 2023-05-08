@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- /chartjs/src/main/webapp/bar1.html
+     chartjs : Dynamic Web Project 생성 => 그래프 작성
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>간단한 막대 그래프 작성</title>
+</head>
+<body>
+<!-- canvas 태그 : 그래프가 출력되는 영역. -->
+<div><canvas id="myChart"></canvas></div>
+<script type="text/javascript" 
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
+<script type="text/javascript">
+   const ctx = document.getElementById("myChart") //canvas영역. 그래프작성영역
+   new Chart(ctx,{
+	   //bar : 막대그래프, line : 선그래프, pie : 파이그래프
+	   type:'bar', //그래프 형태
+	   data : {    //그래프작성을 위한 데이터
+	     labels : ['Red','Blue','Yellow','Green','Purple','Orange'], //x축
+		 datasets : [{  //데이터 부분
+		   label:'# of Votes1',
+		   data : [12,19,3,5,2,3],
+		   borderWidth : 1,
+		   backgroundColor : ['red',"blue",'yellow','green','purple','orange']
+		 },
+		 {  //데이터 부분
+			   label:'# of Votes2',
+			   data : [5,9,1,10,15,3],
+			   borderWidth : 1,
+			   backgroundColor : ['red',"blue",'yellow','green','purple','orange']
+		 }]
+	   },
+	   options : {  //그래프 출력시 처리되는 다양한 옵션 설정
+		   scales : { y:{beginAtZero:true}},
+		   legend : {position : 'right'}
+	   }
+   })
+</script>
+</body>
+</html>
